@@ -7,5 +7,24 @@
 </head>
 <body>
 	<a href="iosamap://myLocation?sourceApplication=applicationName"> 地图</a>
+	<div id="text">
+		
+	</div>
+	<button id="pos">坐标</button>
 </body>
+<script>
+	var el = document.getElementById("pos");
+	var el1 = document.getElementById("text");
+		el.addEventListener("click",function(){
+			navigator.geolocation.watchPosition(
+		        (position) => {
+		            let longitude = JSON.stringify(position.coords.longitude);//精度
+		            let latitude = JSON.stringify(position.coords.latitude);//纬度
+		            console.log(longitude);
+		          	console.log(latitude);
+		          el1.innerHTML = longitude + latitude;
+		   })
+		})
+	  
+</script>
 </html>
